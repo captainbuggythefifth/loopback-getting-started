@@ -1,0 +1,196 @@
+<html>
+<head>
+    <!--<script type="text/javascript"
+            src="//code.angularjs.org/1.2.16/angular.js">
+    </script>
+    <script type="text/javascript"
+            src="//code.angularjs.org/1.2.16/angular-resource.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>-->
+
+    <link rel="stylesheet" type="text/css" href="./vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./vendor/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" type="text/css" href="./vendor/css/ripples.min.css">
+
+    <link rel="stylesheet" type="text/css" href="./vendor/css/bootstrap-material-datetimepicker.css">
+
+    <link rel="stylesheet" type="text/css" href="./vendor/css/bootstrap-datetimepicker.min.css">
+
+
+    <script type="text/javascript"
+            src="./vendor/scripts/angular.min.js">
+    </script>
+    <script type="text/javascript"
+            src="./vendor/scripts/angular-resource.min.js">
+    </script>
+
+    <script type="text/javascript"
+            src="./vendor/scripts/angular-ui-router.min.js">
+    </script>
+    <script type="text/javascript"
+            src="app/controllers/breakfast-controller.js">
+    </script>
+
+    <script type="text/javascript"
+            src="app/services/breakfast-service.js">
+    </script>
+
+    <script type="text/javascript"
+            src="app/services/auth-service.js">
+    </script>
+
+    <script type="text/javascript"
+            src="js/lb-services.js">
+    </script>
+    <script type="text/javascript"
+            src="app/app.routes.js">
+    </script>
+
+    <script type="text/javascript"
+            src="app/controllers/client-controller.js">
+    </script>
+
+    <script type="text/javascript"
+            src="app/controllers/main-controller.js">
+    </script>
+
+    <script type="text/javascript"
+            src="app/controllers/page-controller.js">
+    </script>
+
+    <script type="text/javascript"
+            src="app/controllers/auth-controller.js">
+    </script>
+
+    <script type="text/javascript"
+            src="app/app.js">
+    </script>
+</head>
+
+<body ng-app="MyApp">
+<!-- NAVIGATION -->
+<!--
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="#">AngularUI Router</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="about">About</a></li>
+    </ul>
+</nav>
+-->
+
+
+<div class="bs-component">
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-warning-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)">Brand<div class="ripple-container"></div></a>
+            </div>
+            <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="javascript:void(0)">Active</a></li>
+                    <li><a href="javascript:void(0)">Link</a></li>
+                    <li class="dropdown" ng-controller="BreakfastController as breakfast">
+                        <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" ng-repeat="each in breakfast.breakfasts">
+                            <!--<li><a href="javascript:void(0)">Action</a></li>
+                            <li><a href="javascript:void(0)">Another action</a></li>
+                            <li><a href="javascript:void(0)">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Dropdown header</li>
+                            <li><a href="javascript:void(0)">Separated link</a></li>
+                            <li><a href="javascript:void(0)">One more separated link</a></li>-->
+                            <li><a href="javascript:void(0)">{{ each.name }}: {{ each.address }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group is-empty">
+                            <input type="text" class="form-control col-md-8" placeholder="Search">
+                            <span class="material-input"></span></div>
+                    </form>
+                    <li ng-if="main.loggedIn"  class="dropdown">
+                        <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <!--<img height="20px" width="20px" src="https://z-1-scontent-sjc2-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/1937156_10206864744250477_5559134031423174693_n.jpg?oh=f4dcada41a434144baa11830c2b7fa3f&oe=57454820" alt="..." class="img-responsive img-rounded">
+                        -->
+                            <i>{{ main.user.username }}</i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)">Profile</a></li>
+                            <li><a href="javascript:void(0)">Another action</a></li>
+                            <li><a href="javascript:void(0)">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a ng-click="main.doLogout()" href="#">Log Out</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" ng-if="!main.loggedIn" data-toggle="modal" data-target="#log-in-modal">Login</a>
+                    </li>
+                    <li>
+                        <a href="#" ng-if="!main.loggedIn" data-toggle="modal" data-target="#sign-up-modal">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+    <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+    <div ui-view></div>
+
+</div>
+<div ng-include="'app/views/modals/log-in.html'"></div>
+<div ng-include="'app/views/modals/sign-up.html'"></div>
+
+
+<script type="text/javascript"
+        src="./vendor/scripts/jquery.min.js">
+</script>
+<script type="text/javascript"
+        src="./vendor/scripts/bootstrap.min.js">
+</script>
+
+<script type="text/javascript"
+        src="./vendor/scripts/material.min.js">
+</script>
+
+<script type="text/javascript"
+        src="./vendor/scripts/ripples.min.js">
+</script>
+
+<script type="text/javascript"
+        src="./vendor/scripts/moment-with-locales.min.js">
+</script>
+
+<script type="text/javascript"
+        src="./vendor/scripts/bootstrap-material-datetimepicker.js">
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#inputBirthday').bootstrapMaterialDatePicker();
+        $.material.init();
+    });
+</script>
+
+
+
+</body>
+</html>

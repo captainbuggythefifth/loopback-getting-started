@@ -1,0 +1,77 @@
+<div class="modal" id="sign-up-modal" ng-controller="SignUpController as signUp">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Log in</h4>
+            </div>
+            <form method="post" ng-submit="signUp.signUp()">
+                <div class="modal-body">
+                    <div class="form-group is-empty">
+                        <label for="inputEmail" class="col-md-2 control-label">Email</label>
+
+                        <div class="col-md-10">
+                            <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email"
+                                   ng-model="signUp.signUpData.email">
+                        </div>
+                        <span class="material-input"></span>
+                    </div>
+                    <div class="form-group is-empty">
+                        <label for="inputPassword" class="col-md-2 control-label">Password</label>
+
+                        <div class="col-md-10">
+                            <input name="password" type="password" class="form-control" id="inputPassword"
+                                   placeholder="Password" ng-model="signUp.signUpData.password">
+
+                        </div>
+                        <span class="material-input"></span></div>
+
+                    <div class="form-group is-empty">
+                        <label for="inputFirstName" class="col-md-2 control-label">First Name</label>
+
+                        <div class="col-md-10">
+                            <input name="first_name" type="text" class="form-control" id="inputFirstName"
+                                   placeholder="First Name" ng-model="signUp.signUpData.firstName">
+                        </div>
+
+                        <span class="material-input"></span></div>
+
+                    <div class="form-group is-empty">
+                        <label for="inputLastName" class="col-md-2 control-label">Last Name</label>
+
+                        <div class="col-md-10">
+                            <input name="last_name" type="text" class="form-control" id="inputLastName"
+                                   placeholder="Last Name" ng-model="signUp.signUpData.lastName">
+                        </div>
+
+                        <span class="material-input"></span></div>
+
+                    <div class="form-group is-empty">
+                        <label for="inputBirthday" class="col-md-2 control-label">Birthday</label>
+
+                        <div class="col-md-10">
+                            <input name="birthday" type="text" class="form-control" id="inputBirthday"
+                                   placeholder="Birthday" ng-model="signUp.signUpData.birthday">
+                        </div>
+
+                        <span class="material-input"></span></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="alert alert-dismissible alert-warning" ng-if="signUp.error">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4>Warning!</h4>
+
+                        <p>{{ signUp.error }}</p>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

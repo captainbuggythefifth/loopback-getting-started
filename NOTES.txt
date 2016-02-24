@@ -1,0 +1,5 @@
+https://github.com/beeman/loopback-angular-admin
+
+https://github.com/strongloop/loopback-example-access-control
+
+https://docs.strongloop.com/display/public/LB/AngularJS+JavaScript+SDK
